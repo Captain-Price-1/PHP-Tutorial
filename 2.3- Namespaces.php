@@ -234,6 +234,7 @@ class Transaction{
 // suppose you have defined a namespace and you want to use another class which is not 
 // in that namespace ,then you will have to include a '\' to tell PHP that you should import 
 // this from the global
+// like for example 
 
 <?php
 namespace PaymentGateway\Paddle;
@@ -243,3 +244,17 @@ class Transaction{
         var_dump(new \DateTime());
     }
 }
+
+
+// Qualified name example
+namespace PaymentGateway\Paddle;
+class Transaction {
+    public function __construct() {
+        var_dump(new \DateTime());
+    }
+}
+
+// Fully qualified name example
+$transaction = new \PaymentGateway\Paddle\Transaction();
+
+var_dump($transaction);
