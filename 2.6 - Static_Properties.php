@@ -3,11 +3,12 @@
 
 class Transaction {
     public static int $count = 0;
-    public $amount;
-    public function __construct(
-        public float $amount,
-        public string $description
-    ){
+    public float $amount;
+    public string $description;
+    
+    public function __construct(float $amount, string $description) {
+        $this->amount = $amount;
+        $this->description = $description;
         self::$count++;
     }
 }
