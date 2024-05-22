@@ -78,3 +78,8 @@ $amount = $reflection->getProperty('amount')->getValue($transaction);
  * The point of private and protected is to let the one accessing the property know about 
  * the restriction of the property.
  */
+
+
+ /**
+  * THE ABSTRACTION PRINCIPLE 
+  */
