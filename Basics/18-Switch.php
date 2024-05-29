@@ -201,5 +201,3 @@ echo "The language is in the $category category.";
 
 // 4. Clearer code: Switch statements can make your code clearer and more expressive, especially when you use descriptive case
 // labels to explain the different options.
-
-
