@@ -135,3 +135,48 @@ $format15 = $dateTime->format('U');
 // to get the name of the timezone we can do something like this
 
 echo $dateTime->getTimezone()->getName(); // will print "America/New_York"
+
+
+// the date format is in american format by default like this - month/day/year
+// this could cause a problem when converting the date format and manipulating it
+
+// for example if you have a date like
+$date = '12/05/2024 3:30PM'
+$dateTime = new DateTime($date);
+
+var_dump($dateTime); // this will print the date as 5th of december not 12th of may
+// suppose the date is something like 15/05/2024 3:30PM , then it would throw error because
+// 15th month doesn't exist
+
+// Solution -1
+
+// USING THE DASHES INSTEAD OF SLASHES
+// in php when you use the dashes instead of slashes, then it uses the date in the
+// european format instead of the american format
+
+// we could do something like
+$dateTime = new DateTime(str_replace('/', '-', $date));
+// we made changes to this one, instead of the $date variable because that may
+// come from an api and we may not have control over it
+
+
+// the above solution is not a good solution
+// we could use the createFromFormat() function
+
+$dateTime = DateTime::createFromFormat('d/m/Y g:iA', $date);
+
+
+/* --------COMPARING
+DATES---------------------------------------------------------------------------------------------------------- */
+
+$dateTime1 = new DateTime('05/25/2024 9:15AM');
+$dateTime2 = new DateTime('05/25/2024 9:14AM');
+
+var_dump($dateTime1 > $dateTime2); // will print bool(true)
+var_dump($dateTime1
+< $dateTime2); // will print bool(false) var_dump($dateTime1>= $dateTime2); // will print bool(false)
+var_dump($dateTime1 <= $dateTime2); // will print bool(true)
+var_dump($dateTime1 == $dateTime2); // will print bool(false)
+var_dump($dateTime1 === $dateTime2); // will print bool(false)
+var_dump($dateTime1 != $dateTime2); // will print bool(true)
+var_dump($dateTime1 !== $dateTime2); // will print bool(true)
